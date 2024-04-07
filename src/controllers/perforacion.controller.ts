@@ -85,6 +85,12 @@ export class PerforacionController {
     return this.perforacionRepository.find(filter);
   }
 
+
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuPerforacionId,ConfiguracionSeguridad.editarAccion]})
+
   @patch('/perforacion')
   @response(200, {
     description: 'Perforacion PATCH success count',
@@ -149,6 +155,11 @@ export class PerforacionController {
     await this.perforacionRepository.replaceById(id, perforacion);
   }
 
+
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuPerforacionId,ConfiguracionSeguridad.eliminarAccion]})
   @del('/perforacion/{id}')
   @response(204, {
     description: 'Perforacion DELETE success',

@@ -82,6 +82,10 @@ export class PerforistaController {
     return this.perforistaRepository.find(filter);
   }
 
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuPerforistasId,ConfiguracionSeguridad.editarAccion]})
   @patch('/perforista')
   @response(200, {
     description: 'Perforista PATCH success count',
@@ -146,6 +150,9 @@ export class PerforistaController {
     await this.perforistaRepository.replaceById(id, perforista);
   }
 
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuPerforistasId,ConfiguracionSeguridad.eliminarAccion]})
   @del('/perforista/{id}')
   @response(204, {
     description: 'Perforista DELETE success',

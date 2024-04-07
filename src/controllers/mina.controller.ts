@@ -85,6 +85,12 @@ export class MinaController {
     return this.minaRepository.find(filter);
   }
 
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuMinasId,ConfiguracionSeguridad.editarAccion]})
+
+
   @patch('/mina')
   @response(200, {
     description: 'Mina PATCH success count',
@@ -148,6 +154,12 @@ export class MinaController {
   ): Promise<void> {
     await this.minaRepository.replaceById(id, mina);
   }
+
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuMinasId,ConfiguracionSeguridad.eliminarAccion]})
+
 
   @del('/mina/{id}')
   @response(204, {

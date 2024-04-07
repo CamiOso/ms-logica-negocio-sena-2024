@@ -84,6 +84,10 @@ export class MuestraController {
     return this.muestraRepository.find(filter);
   }
 
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuMuestrasId,ConfiguracionSeguridad.editarAccion]})
   @patch('/muestra')
   @response(200, {
     description: 'Muestra PATCH success count',
@@ -147,6 +151,11 @@ export class MuestraController {
   ): Promise<void> {
     await this.muestraRepository.replaceById(id, muestra);
   }
+
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuMuestrasId,ConfiguracionSeguridad.eliminarAccion]})
 
   @del('/muestra/{id}')
   @response(204, {

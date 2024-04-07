@@ -86,6 +86,11 @@ export class LaboratorioController {
     return this.laboratorioRepository.find(filter);
   }
 
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuLaboratoriosId,ConfiguracionSeguridad.editarAccion]})
+
+
   @patch('/laboratorio')
   @response(200, {
     description: 'Laboratorio PATCH success count',
@@ -149,6 +154,11 @@ export class LaboratorioController {
   ): Promise<void> {
     await this.laboratorioRepository.replaceById(id, laboratorio);
   }
+
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuLaboratoriosId,ConfiguracionSeguridad.eliminarAccion]})
 
   @del('/laboratorio/{id}')
   @response(204, {

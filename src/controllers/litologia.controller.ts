@@ -83,6 +83,11 @@ export class LitologiaController {
     return this.litologiaRepository.find(filter);
   }
 
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuLitologiasId,ConfiguracionSeguridad.editarAccion]})
+
   @patch('/litologia')
   @response(200, {
     description: 'Litologia PATCH success count',
@@ -147,6 +152,10 @@ export class LitologiaController {
     await this.litologiaRepository.replaceById(id, litologia);
   }
 
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuLitologiasId,ConfiguracionSeguridad.eliminarAccion]})
   @del('/litologia/{id}')
   @response(204, {
     description: 'Litologia DELETE success',

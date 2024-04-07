@@ -84,6 +84,10 @@ export class PozoController {
     return this.pozoRepository.find(filter);
   }
 
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuPozosId,ConfiguracionSeguridad.editarAccion]})
+
   @patch('/pozo')
   @response(200, {
     description: 'Pozo PATCH success count',
@@ -147,6 +151,12 @@ export class PozoController {
   ): Promise<void> {
     await this.pozoRepository.replaceById(id, pozo);
   }
+
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuPozosId,ConfiguracionSeguridad.eliminarAccion]})
+
 
   @del('/pozo/{id}')
   @response(204, {
