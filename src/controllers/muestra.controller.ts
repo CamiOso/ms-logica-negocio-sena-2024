@@ -19,6 +19,8 @@ import {
 } from '@loopback/rest';
 import {Muestra} from '../models';
 import {MuestraRepository} from '../repositories';
+import {ConfiguracionSeguridad} from '../config/configuracion.seguridad';
+import {authenticate} from '@loopback/authentication';
 
 export class MuestraController {
   constructor(
@@ -57,6 +59,12 @@ export class MuestraController {
   ): Promise<Count> {
     return this.muestraRepository.count(where);
   }
+
+
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuMuestrasId,ConfiguracionSeguridad.listarAccion]})
 
   @get('/muestra')
   @response(200, {

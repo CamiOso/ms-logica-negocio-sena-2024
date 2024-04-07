@@ -19,6 +19,8 @@ import {
 } from '@loopback/rest';
 import {Laboratorio} from '../models';
 import {LaboratorioRepository} from '../repositories';
+import {ConfiguracionSeguridad} from '../config/configuracion.seguridad';
+import { authenticate } from '@loopback/authentication';
 
 export class LaboratorioController {
   constructor(
@@ -57,6 +59,14 @@ export class LaboratorioController {
   ): Promise<Count> {
     return this.laboratorioRepository.count(where);
   }
+
+
+
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuLaboratoriosId,ConfiguracionSeguridad.listarAccion]})
+
 
   @get('/laboratorio')
   @response(200, {

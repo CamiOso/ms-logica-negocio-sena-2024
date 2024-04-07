@@ -19,6 +19,8 @@ import {
 } from '@loopback/rest';
 import {Mina} from '../models';
 import {MinaRepository} from '../repositories';
+import {ConfiguracionSeguridad} from '../config/configuracion.seguridad';
+import {authenticate} from '@loopback/authentication';
 
 export class MinaController {
   constructor(
@@ -57,6 +59,13 @@ export class MinaController {
   ): Promise<Count> {
     return this.minaRepository.count(where);
   }
+
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuMinasId,ConfiguracionSeguridad.listarAccion]})
+
+
 
   @get('/mina')
   @response(200, {

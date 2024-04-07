@@ -19,6 +19,8 @@ import {
 } from '@loopback/rest';
 import {Pozo} from '../models';
 import {PozoRepository} from '../repositories';
+import { ConfiguracionSeguridad} from '../config/configuracion.seguridad';
+import { authenticate } from '@loopback/authentication';
 
 export class PozoController {
   constructor(
@@ -57,6 +59,12 @@ export class PozoController {
   ): Promise<Count> {
     return this.pozoRepository.count(where);
   }
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuPozosId,ConfiguracionSeguridad.listarAccion]})
+
+
 
   @get('/pozo')
   @response(200, {

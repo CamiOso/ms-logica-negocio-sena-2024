@@ -19,6 +19,8 @@ import {
 } from '@loopback/rest';
 import {Litologia} from '../models';
 import {LitologiaRepository} from '../repositories';
+import {ConfiguracionSeguridad} from '../config/configuracion.seguridad';
+import {authenticate} from '@loopback/authentication';
 
 export class LitologiaController {
   constructor(
@@ -57,6 +59,11 @@ export class LitologiaController {
   ): Promise<Count> {
     return this.litologiaRepository.count(where);
   }
+
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuLitologiasId,ConfiguracionSeguridad.listarAccion]})
 
   @get('/litologia')
   @response(200, {

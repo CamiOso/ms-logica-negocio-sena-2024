@@ -19,6 +19,8 @@ import {
 } from '@loopback/rest';
 import {Perforacion} from '../models';
 import {PerforacionRepository} from '../repositories';
+import {ConfiguracionSeguridad} from '../config/configuracion.seguridad';
+import {authenticate} from '@loopback/authentication';
 
 export class PerforacionController {
   constructor(
@@ -57,6 +59,13 @@ export class PerforacionController {
   ): Promise<Count> {
     return this.perforacionRepository.count(where);
   }
+
+
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuPerforacionId,ConfiguracionSeguridad.listarAccion]})
+
 
   @get('/perforacion')
   @response(200, {

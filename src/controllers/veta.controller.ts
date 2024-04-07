@@ -20,6 +20,7 @@ import {
 import {Veta} from '../models';
 import {VetaRepository} from '../repositories';
 
+
 export class VetaController {
   constructor(
     @repository(VetaRepository)
@@ -57,6 +58,12 @@ export class VetaController {
   ): Promise<Count> {
     return this.vetaRepository.count(where);
   }
+
+
+
+
+
+
 
   @get('/veta')
   @response(200, {

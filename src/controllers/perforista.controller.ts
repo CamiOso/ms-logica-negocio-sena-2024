@@ -19,6 +19,8 @@ import {
 } from '@loopback/rest';
 import {Perforista} from '../models';
 import {PerforistaRepository} from '../repositories';
+import {ConfiguracionSeguridad} from '../config/configuracion.seguridad';
+import {authenticate} from '@loopback/authentication';
 
 export class PerforistaController {
   constructor(
@@ -58,6 +60,10 @@ export class PerforistaController {
     return this.perforistaRepository.count(where);
   }
 
+
+  @authenticate({
+    strategy:'auth',
+  options:[ConfiguracionSeguridad.menuPerforistasId,ConfiguracionSeguridad.listarAccion]})
   @get('/perforista')
   @response(200, {
     description: 'Array of Perforista model instances',
