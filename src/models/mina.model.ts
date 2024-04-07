@@ -53,6 +53,18 @@ export class Mina extends Entity {
   })
   descripcion: string;
 
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  foto: string;
+
+
+
+
+
+
   @belongsTo(() => Departamento)
   departamentoId: number;
 

@@ -40,3 +40,4 @@ export * from './tipo-analisis.controller';
 export * from './tipo-roca.controller';
 export * from './trayectoria.controller';
 export * from './veta.controller';
+export * from './administrador-de-archivos.controller';

@@ -52,6 +52,12 @@ export class Muestra extends Entity {
   })
   longitud: number;
 
+  @property({
+    type: 'string',
+    required: false,
+  })
+  foto: string;
+
   @belongsTo(() => Litologia)
   litologiaId: number;
 

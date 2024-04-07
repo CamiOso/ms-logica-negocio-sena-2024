@@ -85,6 +85,14 @@ export class Pozo extends Entity {
   })
   coordenadaZ: number;
 
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  foto: string;
+
+
   @hasMany(() => Planeador, {through: {model: () => Diseno}})
   planeadores: Planeador[];
 
