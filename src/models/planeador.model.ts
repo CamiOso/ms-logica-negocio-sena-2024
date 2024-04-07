@@ -34,6 +34,13 @@ export class Planeador extends Entity {
   })
   segundoApellido?: string;
 
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  foto: string;
+
   @hasMany(() => Pozo, {through: {model: () => Diseno}})
   pozos: Pozo[];
 

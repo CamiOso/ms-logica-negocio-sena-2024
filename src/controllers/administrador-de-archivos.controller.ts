@@ -132,7 +132,40 @@ export class AdministradorDeArchivosController {
 
 
 
-
+  @post('/cargar-archivo-planeador', {
+    responses: {
+      200: {
+        content: {
+          'application/json': {
+            schema: {
+              type: 'object',
+            },
+          },
+        },
+        description: 'Archivo a cargar',
+      },
+    },
+  })
+  async CargarArchivoPlaneador(
+    @inject(RestBindings.Http.RESPONSE) response: Response,
+    @requestBody.file() request: Request,
+  ): Promise<object | false> {
+    const filePath = path.join(__dirname, ConfiguracionGeneral.carpetaArchivosPlaneadores);
+    let res = await this.StoreFileToPath(
+      filePath,
+      ConfiguracionGeneral.campoDePlaneador,
+      request,
+      response,
+      ConfiguracionGeneral.extensionesImagenes,
+    );
+    if (res) {
+      const filename = response.req?.file?.filename;
+      if (filename) {
+        return {file: filename};
+      }
+    }
+    return res;
+  }
 
 
 
@@ -255,6 +288,10 @@ export class AdministradorDeArchivosController {
         break;
       case 3:
         filePath = path.join(__dirname, ConfiguracionGeneral.carpetaArchivosPozos);
+        break;
+
+        case 4:
+        filePath = path.join(__dirname, ConfiguracionGeneral.carpetaArchivosPlaneadores);
         break;
     }
     return filePath;

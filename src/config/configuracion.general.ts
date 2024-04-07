@@ -7,7 +7,11 @@ export namespace ConfiguracionGeneral {
   export const campoDeMuestra:string="file";
   export const carpetaArchivosPozos:string="archivos/pozos";
   export const campoDePozo:string="file";
-  export const extensionesImagenes:string [ ]=["JPG","PNG","JPEG"]
+
+  export const carpetaArchivosPlaneadores:string ="archivos/planeadores";
+  export const campoDePlaneador:string="file";
+
+  export const extensionesImagenes:string [ ]=[".JPG",".PNG",".JPEG"]
 
 
 
