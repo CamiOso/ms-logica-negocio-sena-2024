@@ -18,6 +18,7 @@ export namespace ConfiguracionSeguridad{
   export const editarAccion="editar";
   export const eliminarAcion="eliminar";
   export const descargarAcion="descargar";
+  export const enlaceMicroservicioSeguridad:string="";
 
 
 

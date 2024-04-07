@@ -5,6 +5,8 @@ import parseBearerToken from 'parse-bearer-token';
 import {inject, injectable, service} from '@loopback/core';
 
 import {repository} from '@loopback/repository';
+import {ConfiguracionSeguridad} from '../config/configuracion.seguridad';
+const fetch = require('node-fetch');
 
 
 @injectable()
