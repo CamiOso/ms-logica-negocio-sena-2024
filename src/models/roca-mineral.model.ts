@@ -9,6 +9,15 @@ export class RocaMineral extends Entity {
   })
   id?: number;
 
+  @property({
+    type: 'number',
+  })
+  mineralId?: number;
+
+  @property({
+    type: 'number',
+  })
+  rocaId?: number;
 
   constructor(data?: Partial<RocaMineral>) {
     super(data);

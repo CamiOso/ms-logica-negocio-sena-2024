@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {Litologia} from './litologia.model';
 
 @model()
 export class Muestra extends Entity {
@@ -21,6 +22,8 @@ export class Muestra extends Entity {
   })
   longitud: number;
 
+  @belongsTo(() => Litologia)
+  litologiaId: number;
 
   constructor(data?: Partial<Muestra>) {
     super(data);

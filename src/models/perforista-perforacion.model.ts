@@ -9,6 +9,20 @@ export class PerforistaPerforacion extends Entity {
   })
   id?: number;
 
+  @property({
+    type: 'number',
+  })
+  equipoId?: number;
+
+  @property({
+    type: 'number',
+  })
+  perforistaId?: number;
+
+  @property({
+    type: 'number',
+  })
+  perforacionId?: number;
 
   constructor(data?: Partial<PerforistaPerforacion>) {
     super(data);

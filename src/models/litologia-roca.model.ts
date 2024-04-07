@@ -9,6 +9,15 @@ export class LitologiaRoca extends Entity {
   })
   id?: number;
 
+  @property({
+    type: 'number',
+  })
+  litologiaId?: number;
+
+  @property({
+    type: 'number',
+  })
+  rocaId?: number;
 
   constructor(data?: Partial<LitologiaRoca>) {
     super(data);

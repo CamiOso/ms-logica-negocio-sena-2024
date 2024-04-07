@@ -1,4 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Pozo} from './pozo.model';
+import {PozoVeta} from './pozo-veta.model';
 
 @model()
 export class Veta extends Entity {
@@ -15,6 +17,8 @@ export class Veta extends Entity {
   })
   nombre: string;
 
+  @hasMany(() => Pozo, {through: {model: () => PozoVeta}})
+  pozos: Pozo[];
 
   constructor(data?: Partial<Veta>) {
     super(data);

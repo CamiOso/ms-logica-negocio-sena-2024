@@ -1,4 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Mina} from './mina.model';
+import {EstadoMina} from './estado-mina.model';
 
 @model()
 export class Estado extends Entity {
@@ -15,6 +17,8 @@ export class Estado extends Entity {
   })
   nombre: string;
 
+  @hasMany(() => Mina, {through: {model: () => EstadoMina}})
+  minas: Mina[];
 
   constructor(data?: Partial<Estado>) {
     super(data);

@@ -1,4 +1,9 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo, hasMany} from '@loopback/repository';
+import {TipoRoca} from './tipo-roca.model';
+import {Mineral} from './mineral.model';
+import {RocaMineral} from './roca-mineral.model';
+import {Litologia} from './litologia.model';
+import {LitologiaRoca} from './litologia-roca.model';
 
 @model()
 export class Roca extends Entity {
@@ -15,6 +20,14 @@ export class Roca extends Entity {
   })
   descripcion: string;
 
+  @belongsTo(() => TipoRoca)
+  tipoRocaId: number;
+
+  @hasMany(() => Mineral, {through: {model: () => RocaMineral}})
+  minerales: Mineral[];
+
+  @hasMany(() => Litologia, {through: {model: () => LitologiaRoca}})
+  litologias: Litologia[];
   // Define well-known properties here
 
   // Indexer property to allow additional data

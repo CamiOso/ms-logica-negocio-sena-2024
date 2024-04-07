@@ -1,4 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Roca} from './roca.model';
+import {LitologiaRoca} from './litologia-roca.model';
 
 @model()
 export class Litologia extends Entity {
@@ -21,6 +23,8 @@ export class Litologia extends Entity {
   })
   profundidadFinal: number;
 
+  @hasMany(() => Roca, {through: {model: () => LitologiaRoca}})
+  rocas: Roca[];
 
   constructor(data?: Partial<Litologia>) {
     super(data);

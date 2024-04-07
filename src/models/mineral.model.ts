@@ -1,4 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Roca} from './roca.model';
+import {RocaMineral} from './roca-mineral.model';
 
 @model()
 export class Mineral extends Entity {
@@ -21,6 +23,8 @@ export class Mineral extends Entity {
   })
   formulaQuimica: string;
 
+  @hasMany(() => Roca, {through: {model: () => RocaMineral}})
+  rocas: Roca[];
 
   constructor(data?: Partial<Mineral>) {
     super(data);

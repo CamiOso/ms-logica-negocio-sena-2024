@@ -15,6 +15,15 @@ export class EquipoPerforista extends Entity {
   })
   fecha: string;
 
+  @property({
+    type: 'number',
+  })
+  perforistaId?: number;
+
+  @property({
+    type: 'number',
+  })
+  equipoId?: number;
 
   constructor(data?: Partial<EquipoPerforista>) {
     super(data);

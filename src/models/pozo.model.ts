@@ -1,4 +1,8 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Planeador} from './planeador.model';
+import {Diseno} from './diseno.model';
+import {Veta} from './veta.model';
+import {PozoVeta} from './pozo-veta.model';
 
 @model()
 export class Pozo extends Entity {
@@ -33,6 +37,11 @@ export class Pozo extends Entity {
   })
   coordenadaZ: number;
 
+  @hasMany(() => Planeador, {through: {model: () => Diseno}})
+  planeadores: Planeador[];
+
+  @hasMany(() => Veta, {through: {model: () => PozoVeta}})
+  vetas: Veta[];
 
   constructor(data?: Partial<Pozo>) {
     super(data);

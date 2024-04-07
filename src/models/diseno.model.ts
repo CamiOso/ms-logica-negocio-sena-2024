@@ -15,6 +15,15 @@ export class Diseno extends Entity {
   })
   fecha: string;
 
+  @property({
+    type: 'number',
+  })
+  planeadorId?: number;
+
+  @property({
+    type: 'number',
+  })
+  pozoId?: number;
 
   constructor(data?: Partial<Diseno>) {
     super(data);

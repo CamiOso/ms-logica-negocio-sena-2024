@@ -9,6 +9,15 @@ export class EstadoMina extends Entity {
   })
   id?: number;
 
+  @property({
+    type: 'number',
+  })
+  minaId?: number;
+
+  @property({
+    type: 'number',
+  })
+  estadoId?: number;
 
   constructor(data?: Partial<EstadoMina>) {
     super(data);

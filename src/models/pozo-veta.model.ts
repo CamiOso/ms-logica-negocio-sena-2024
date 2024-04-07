@@ -9,6 +9,15 @@ export class PozoVeta extends Entity {
   })
   id?: number;
 
+  @property({
+    type: 'number',
+  })
+  pozoId?: number;
+
+  @property({
+    type: 'number',
+  })
+  vetaId?: number;
 
   constructor(data?: Partial<PozoVeta>) {
     super(data);

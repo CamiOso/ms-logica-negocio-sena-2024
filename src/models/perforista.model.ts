@@ -1,4 +1,8 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Equipo} from './equipo.model';
+import {EquipoPerforista} from './equipo-perforista.model';
+import {Perforacion} from './perforacion.model';
+import {PerforistaPerforacion} from './perforista-perforacion.model';
 
 @model()
 export class Perforista extends Entity {
@@ -21,6 +25,11 @@ export class Perforista extends Entity {
   })
   primerApellido: string;
 
+  @hasMany(() => Equipo, {through: {model: () => EquipoPerforista}})
+  equipos: Equipo[];
+
+  @hasMany(() => Perforacion, {through: {model: () => PerforistaPerforacion}})
+  perforaciones: Perforacion[];
 
   constructor(data?: Partial<Perforista>) {
     super(data);
