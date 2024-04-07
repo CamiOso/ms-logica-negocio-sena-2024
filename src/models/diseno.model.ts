@@ -1,6 +1,43 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model(
+
+  {
+    settings:{
+
+    foreignKeys:{
+
+      fk_Planeador_idPlaneador:{
+       name: "fk_Planeador_idPlaneador",
+       entity:"Planeador",
+       entityKey:"id",
+       foreignKey:"planeadorId"
+
+      },
+
+      fk_Pozo_idPozo:{
+        name: "fk_Pozo_idPozo",
+        entity:"Pozo",
+        entityKey:"id",
+        foreignKey:"pozoId"
+
+       },
+
+
+
+    }
+
+    }
+
+
+
+
+
+     }
+
+
+
+)
 export class Diseno extends Entity {
   @property({
     type: 'number',

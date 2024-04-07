@@ -3,7 +3,36 @@ import {Pozo} from './pozo.model';
 import {Perforista} from './perforista.model';
 import {PerforistaPerforacion} from './perforista-perforacion.model';
 
-@model()
+@model(
+
+
+
+  {
+    settings:{
+
+    foreignKeys:{
+
+      
+      fkPozoidPozo2:{
+        name: "fkPozoidPozo2",
+        entity:"Pozo",
+        entityKey:"id",
+        foreignKey:"pozoId"
+
+       },
+
+
+
+    }
+
+    }
+
+
+
+
+
+     }
+)
 export class Perforacion extends Entity {
   @property({
     type: 'number',

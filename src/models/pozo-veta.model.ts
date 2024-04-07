@@ -1,6 +1,43 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model(
+
+  {
+    settings:{
+
+    foreignKeys:{
+
+      fk_Veta_idVeta:{
+       name: "fk_Veta_idVeta",
+       entity:"Veta",
+       entityKey:"id",
+       foreignKey:"vetaId"
+
+      },
+
+      fkPozoidPozo:{
+        name: "fkPozoidPozo",
+        entity:"Pozo",
+        entityKey:"id",
+        foreignKey:"pozoId"
+
+       },
+
+
+
+    }
+
+    }
+
+
+
+
+
+     }
+
+
+
+)
 export class PozoVeta extends Entity {
   @property({
     type: 'number',

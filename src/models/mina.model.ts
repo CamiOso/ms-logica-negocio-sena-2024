@@ -3,7 +3,36 @@ import {Departamento} from './departamento.model';
 import {Estado} from './estado.model';
 import {EstadoMina} from './estado-mina.model';
 
-@model()
+@model(
+
+  {
+    settings:{
+
+    foreignKeys:{
+
+      fk_Departamento_idDepartamento:{
+       name: "fk_Departamento_idDepartamento",
+       entity:"Departamento",
+       entityKey:"id",
+       foreignKey:"departamentoId"
+
+      }
+    }
+
+    }
+
+
+
+
+
+     }
+
+
+
+
+
+
+)
 export class Mina extends Entity {
   @property({
     type: 'number',

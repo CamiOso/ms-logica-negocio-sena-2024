@@ -1,6 +1,46 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model(
+
+  {
+    settings:{
+
+    foreignKeys:{
+
+      fkRocaidRoca:{
+       name: "fkRocaidRoca",
+       entity:"Roca",
+       entityKey:"id",
+       foreignKey:"rocaId"
+
+      },
+
+      fk_Mineral_idMineral:{
+        name: "fk_Mineral_idMineral",
+        entity:"Mineral",
+        entityKey:"id",
+        foreignKey:"mineralId"
+
+       },
+
+
+
+    }
+
+    }
+
+
+
+
+
+     }
+
+
+
+
+
+
+)
 export class RocaMineral extends Entity {
   @property({
     type: 'number',

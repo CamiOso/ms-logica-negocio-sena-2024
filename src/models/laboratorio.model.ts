@@ -1,6 +1,32 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model(
+
+  {
+    settings:{
+
+    foreignKeys:{
+
+      fkMuestra_idMuestra:{
+       name: "fkMuestra_idMuestra",
+       entity:"Muestra",
+       entityKey:"id",
+       foreignKey:"muestraId"
+
+      }
+
+
+    }
+
+    }
+
+
+
+
+
+     }
+
+)
 export class Laboratorio extends Entity {
   @property({
     type: 'number',
@@ -14,6 +40,13 @@ export class Laboratorio extends Entity {
     required: true,
   })
   nombre: string;
+
+
+  @property({
+    type: 'number',
+  })
+  muestraId?: number;
+
 
 
   constructor(data?: Partial<Laboratorio>) {

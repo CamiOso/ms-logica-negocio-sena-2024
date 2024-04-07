@@ -5,7 +5,32 @@ import {RocaMineral} from './roca-mineral.model';
 import {Litologia} from './litologia.model';
 import {LitologiaRoca} from './litologia-roca.model';
 
-@model()
+@model(
+  {
+ settings:{
+
+ foreignKeys:{
+
+   fk_tipoRoca_idTipoRoca:{
+    name: "fk_tipoRoca_idTipoRoca",
+    entity:"TipoRoca",
+    entityKey:"id",
+    foreignKey:"tipoRocaId"
+
+   }
+ }
+
+ }
+
+
+
+
+
+  }
+
+
+
+)
 export class Roca extends Entity {
   @property({
     type: 'number',

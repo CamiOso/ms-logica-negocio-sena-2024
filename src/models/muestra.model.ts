@@ -1,7 +1,37 @@
 import {Entity, model, property, belongsTo} from '@loopback/repository';
 import {Litologia} from './litologia.model';
 
-@model()
+@model(
+
+
+  {
+    settings:{
+
+    foreignKeys:{
+
+      fk_Litologia_idLitologia2:{
+       name: "fk_Litologia_idLitologia2",
+       entity:"Litologia",
+       entityKey:"id",
+       foreignKey:"litologiaId"
+
+      }
+
+
+    }
+
+    }
+
+
+
+
+
+     }
+
+
+
+
+)
 export class Muestra extends Entity {
   @property({
     type: 'number',

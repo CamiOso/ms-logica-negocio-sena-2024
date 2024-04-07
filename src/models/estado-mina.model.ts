@@ -1,6 +1,53 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model(
+
+  {
+    settings:{
+
+    foreignKeys:{
+
+      fk_Mina_idMina:{
+       name: "fk_Mina_idMina",
+       entity:"Mina",
+       entityKey:"id",
+       foreignKey:"minaId"
+
+      },
+
+      fk_Estado_idEstado:{
+        name: "fk_Estado_idEstado",
+        entity:"Estado",
+        entityKey:"id",
+        foreignKey:"estadoId"
+
+       },
+
+
+
+    }
+
+    }
+
+
+
+
+
+     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
 export class EstadoMina extends Entity {
   @property({
     type: 'number',

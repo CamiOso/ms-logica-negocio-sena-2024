@@ -1,6 +1,44 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model(
+
+  {
+    settings:{
+
+    foreignKeys:{
+
+      fk_Litologia_idLitologia:{
+       name: "fk_Litologia_idLitologia",
+       entity:"Litologia",
+       entityKey:"id",
+       foreignKey:"litologiaId"
+
+      },
+
+      fk_Roca_idRoca:{
+        name: "fk_Roca_idRoca",
+        entity:"Roca",
+        entityKey:"id",
+        foreignKey:"rocaId"
+
+       },
+
+
+
+    }
+
+    }
+
+
+
+
+
+     }
+
+
+
+
+)
 export class LitologiaRoca extends Entity {
   @property({
     type: 'number',
